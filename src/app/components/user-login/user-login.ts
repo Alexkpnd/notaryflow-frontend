@@ -45,7 +45,7 @@ export class UserLogin {
           username: decodedToken.username,
           role: decodedToken.role
         })
-        this.router.navigate(['landing-page']);
+        this.router.navigate(['user-main-page']);
       },
       error:(error) => {
         this.invalidLogin.set(true);

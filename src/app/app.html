@@ -1,5 +1,14 @@
 <div class="container">
-<app-navbar></app-navbar>
-
-<router-outlet></router-outlet>
+    <div>
+        <app-navbar></app-navbar>
+    </div>
+    @if (user()) {
+        <div class="d-flex gap-2">
+            <app-list-menu class="w-25"></app-list-menu>
+            <router-outlet class="text-nowrap"></router-outlet>
+        </div>
+    } @else {
+        <router-outlet></router-outlet>
+    }
+    
 </div>
