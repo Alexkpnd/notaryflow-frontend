@@ -7,7 +7,6 @@
                 {{registrationStatus()?.message}}
             </div>
         }
-
         @if (!registrationStatus()?.success) {
             <div class="alert alert-danger mt-2 w-60">
                 <p>Error: {{registrationStatus()?.message}}</p>
@@ -15,7 +14,6 @@
             </div>
         }
     }
-
     <form class="d-flex flex-column align-items-center mt-4 gap-2" [formGroup]="registerForm">
         <div class="d-flex gap-2">
             <div class=" d-flex flex-column">
@@ -34,8 +32,7 @@
                                 <mat-error>Username must be at least 3 chars</mat-error>
                             } @else {
                                 <mat-error>Username is required.</mat-error>
-                            }
-                            
+                            }                          
                         </mat-form-field>
                     </div>
                     <div class="d-flex gap-3">
@@ -43,7 +40,7 @@
                             <mat-label>Password</mat-label>
                             <input type="password", matInput formControlName="password">
                             @if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("required")) {
-                                <mat-error>Password is missing</mat-error>
+                                <mat-error>Password is required</mat-error>
                             } @else if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("pattern")) {
                                 <mat-error>Password min: 8 chars/digits, 1 Capital & 1 Symbol at least. </mat-error>
                             }
@@ -54,7 +51,7 @@
                             @if (registerForm.get('confirmPassword')?.hasError('passwordMissmatch')) {
                                 <mat-error>Passwords do not match!</mat-error>
                             } @else if (registerForm.get('confirmPassword')?.touched && registerForm.get("confirmPassword")?.invalid) {
-                                <mat-error> Password is missing</mat-error>
+                                <mat-error> Password is required or invalid</mat-error>
                             }
                         </mat-form-field>
                     </div>
@@ -71,15 +68,11 @@
                             <mat-label>Lastname</mat-label>
                             <input type="text" matInput formControlName="lastname">
                         </mat-form-field>
-                    </div>
-                    
+                    </div>                   
                 </div>
-
             </div>
-
             <div class="d-flex flex-column p-4 border rounded" formGroupName="address">
                 <h6 class="text-secondary mb-3">Address info</h6>
-
                 <div class="d-flex gap-3">
                     <mat-form-field appearance="outline">
                         <mat-label>Street</mat-label>
@@ -90,7 +83,6 @@
                         <input type="text" matInput formControlName="streetNum">
                     </mat-form-field>
                 </div>
-
                 <div class="d-flex gap-3">
                     <mat-form-field appearance="outline">
                         <mat-label>Postal Code</mat-label>
@@ -101,8 +93,6 @@
                         <input type="text" matInput formControlName="city">
                     </mat-form-field>
                 </div>
-                
-
                 <mat-form-field appearance="outline">
                     <mat-label>Country</mat-label>
                     <input type="text" matInput formControlName="country">
@@ -126,20 +116,18 @@
                             <mat-label>Number</mat-label>
                             <input type="text" matInput formControlName="phoneNum">
                         </mat-form-field>
-
                         @if (phone.controls.length > 1 && i!== 0) {
                             <span role="button" class="cursor-pointer pt-3" (click)="deletePhoneNumber(i)"><i class="bi bi-x-circle fs-4"></i></span>
                         }
-                    
-                        
                         <span role="button" class="cursor-pointer pt-3" (click)="addPhoneNumber()"><i class="bi bi-plus-circle fs-4"></i></span>
-                        
                     </div>
                 }
-            </div>
-            
+            </div>      
         </div>
-        <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="registerForm.invalid">Submit</button>
-
+        <div class="d-flex gap-3">
+            <button mat-raised-button type="button" (click)="onResetValues()">Reset</button>
+            <button mat-flat-button color="primary" type="button" (click)="onSubmit()" [disabled]="registerForm.invalid">Submit</button>
+        </div>
+        
     </form>
 </div>

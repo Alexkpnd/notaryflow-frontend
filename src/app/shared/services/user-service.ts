@@ -42,7 +42,21 @@ export class UserService {
     localStorage.removeItem('access_token')
   }
 
-  registerUser(data:IUser){
-    return this.http.post<IUser>(`${API_AUTH_URL}/register`, data);
+  registerUser(userRegisterData:IUser){
+    return this.http.post<IUser>(`${API_AUTH_URL}/register`, userRegisterData);
+  }
+
+  isTokenExpired(): boolean {
+    const token = localStorage.getItem('access_token');
+    if (!token) return true;
+
+    try {
+      const decoded: any = jwtDecode(token);
+      const exp = decoded.exp;
+      const now = Math.floor(Date.now()/1000);
+      return exp < now;
+    } catch (error) {
+      return true;
+    }
   }
 }

@@ -92,16 +92,21 @@ export class UserRegister {
 
     this.userService.registerUser(userCreated).subscribe({
       next: (response) => {
-        this.registerForm.reset()
         this.registrationStatus.set({success:true, message: "User registered. Redirecting to Login Page..."})
+        this.registerForm.reset();
+        this.registerForm.markAsUntouched();
         setTimeout(()=>{
           this.router.navigate(['user-login'])
-        },6000)
+        },3000)
       },
       error: (error) => {
         //console.log('There was an error >>>', error);
         this.registrationStatus.set({success: false, message: error.error.message })
       }
     })
+  }
+
+  onResetValues(){
+    this.registerForm.reset();
   }
 }
