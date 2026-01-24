@@ -1,0 +1,145 @@
+<div class="container mt-5">
+    <h4 class="text-primary">Sign up</h4>
+    <h6 class="lead text-secondary">Please register in order to access services </h6>
+    @if (registrationStatus()) {
+        @if (registrationStatus()?.success){
+            <div class="alert alert-success mt-2 w-50">
+                {{registrationStatus()?.message}}
+            </div>
+        }
+
+        @if (!registrationStatus()?.success) {
+            <div class="alert alert-danger mt-2 w-60">
+                <p>Error: {{registrationStatus()?.message}}</p>
+
+            </div>
+        }
+    }
+
+    <form class="d-flex flex-column align-items-center mt-4 gap-2" [formGroup]="registerForm">
+        <div class="d-flex gap-2">
+            <div class=" d-flex flex-column">
+                <div class="p-4 border rounded">
+                    <h6 class="text-secondary mb-3">Required info*</h6>
+                    <div class="d-flex gap-3 mb-3">
+                        <mat-form-field appearance="outline" >
+                            <mat-label>Email</mat-label>
+                            <input type="text", matInput formControlName="email">
+                            <mat-error>Email is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input type="text", matInput formControlName="username">
+                            @if (registerForm.get('username')?.hasError('minlength')) {
+                                <mat-error>Username must be at least 3 chars</mat-error>
+                            } @else {
+                                <mat-error>Username is required.</mat-error>
+                            }
+                            
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input type="password", matInput formControlName="password">
+                            @if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("required")) {
+                                <mat-error>Password is missing</mat-error>
+                            } @else if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("pattern")) {
+                                <mat-error>Password min: 8 chars/digits, 1 Capital & 1 Symbol at least. </mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirm password</mat-label>
+                            <input type="password", matInput formControlName="confirmPassword">
+                            @if (registerForm.get('confirmPassword')?.hasError('passwordMissmatch')) {
+                                <mat-error>Passwords do not match!</mat-error>
+                            } @else if (registerForm.get('confirmPassword')?.touched && registerForm.get("confirmPassword")?.invalid) {
+                                <mat-error> Password is missing</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="p-4 mt-2 border rounded">
+                    <h6 class="text-secondary mb-3">Personal info</h6>
+                    <div class="d-flex gap-3 mb-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label> Firstname</mat-label>
+                            <input type="text" matInput formControlName="firstname">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Lastname</mat-label>
+                            <input type="text" matInput formControlName="lastname">
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="d-flex flex-column p-4 border rounded" formGroupName="address">
+                <h6 class="text-secondary mb-3">Address info</h6>
+
+                <div class="d-flex gap-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street</mat-label>
+                        <input type="text" matInput formControlName="street">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street Number</mat-label>
+                        <input type="text" matInput formControlName="streetNum">
+                    </mat-form-field>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Postal Code</mat-label>
+                        <input type="text" matInput formControlName="postCode">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input type="text" matInput formControlName="city">
+                    </mat-form-field>
+                </div>
+                
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input type="text" matInput formControlName="country">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class=" p-4 border rounded">
+            <h6 class="text-secondary mb-3">Phone info</h6>
+            <div formArrayName="phone"> 
+                @for (p of phone.controls; let i=$index; track i ) {
+                    <div [formGroupName]="i" class="d-flex gap-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label> Phone Type</mat-label>
+                            <mat-select formControlName="type">
+                                <mat-option value="mobile">Mobile</mat-option>
+                                <mat-option value="work">Work</mat-option>
+                                <mat-option value="home">Home</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Number</mat-label>
+                            <input type="text" matInput formControlName="phoneNum">
+                        </mat-form-field>
+
+                        @if (phone.controls.length > 1 && i!== 0) {
+                            <span role="button" class="cursor-pointer pt-3" (click)="deletePhoneNumber(i)"><i class="bi bi-x-circle fs-4"></i></span>
+                        }
+                    
+                        
+                        <span role="button" class="cursor-pointer pt-3" (click)="addPhoneNumber()"><i class="bi bi-plus-circle fs-4"></i></span>
+                        
+                    </div>
+                }
+            </div>
+            
+        </div>
+        <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="registerForm.invalid">Submit</button>
+
+    </form>
+</div>

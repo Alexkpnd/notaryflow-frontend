@@ -18,7 +18,7 @@
 
     @if (invalidLogin()) {
         <div class="alert alert-danger mt-4">
-          <h6>Invalid Username or Password</h6>
+          <p>Error: {{invalidLogin()?.message}}</p>
         </div>
     }
 

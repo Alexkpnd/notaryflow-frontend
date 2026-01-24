@@ -1,7 +1,7 @@
 <nav class="navbar border-bottom justify-content-between">
     
     @if (user()) {
-         <a class="navbar-brand ms-3" routerLink="user-main-page"><img src="/img/logo-new.png" alt="NotaryFlow" class="logo"></a>
+         <a class="navbar-brand ms-3" routerLink="user-dashboard"><img src="/img/logo-new.png" alt="NotaryFlow" class="logo"></a>
         <div>
             <span class="p-2 m-3 fw-lighter"> Welcome, {{user()?.username}}!</span>
             <span class="me-3 fw-lighter" role="button" routerLink="user-login" (click)="logout()">Logout</span>
@@ -9,7 +9,7 @@
     } @else {
         <a class="navbar-brand ms-3" routerLink=""><img src="/img/logo-new.png" alt="NotaryFlow" class="logo"></a>
         <div>
-            <span role="button" class=" p-2  m-3 fw-lighter ">Sign Up <i class="bi bi-person-fill"></i></span>
+            <span role="button" class=" p-2  m-3 fw-lighter " routerLink="user-register">Sign Up <i class="bi bi-person-fill"></i></span>
             <span class="me-3 fw-lighter"  role="button" routerLink="user-login">Login <i class="bi bi-box-arrow-in-right"></i></span>
         </div>
     }

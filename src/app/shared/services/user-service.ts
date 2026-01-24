@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { jwtDecode } from 'jwt-decode';
 import { Credentials, LoggedInUser } from '../interfaces/user';
+import { IUser } from '../interfaces/user';
 
 const API_AUTH_URL = `${environment.apiUrl}/api/auth`;
 
@@ -41,5 +42,7 @@ export class UserService {
     localStorage.removeItem('access_token')
   }
 
-
+  registerUser(data:IUser){
+    return this.http.post<IUser>(`${API_AUTH_URL}/register`, data);
+  }
 }

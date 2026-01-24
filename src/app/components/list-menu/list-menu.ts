@@ -12,7 +12,7 @@ import { RouterLink, RouterLinkActive} from '@angular/router';
 })
 export class ListMenu {
   menu = [
-    {text:'Main Page', link: 'user-main-page'},
+    {text:'Dashboard', link: 'user-dashboard'},
     {text:'Login', link: 'user-login'}
   ]
 }

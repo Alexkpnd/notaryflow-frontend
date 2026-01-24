@@ -7,6 +7,12 @@ import { LoggedInUser, Credentials } from '../../shared/interfaces/user';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 
+
+type invalidLogin = {
+  isInvalid: boolean;
+  message: string;
+}
+
 @Component({
   selector: 'app-user-login',
   imports: [
@@ -23,7 +29,7 @@ import { Router } from '@angular/router';
 export class UserLogin {
   router = inject(Router)
   userService = inject(UserService);
-  invalidLogin = signal(false);
+  invalidLogin = signal<invalidLogin | null> (null);
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -34,10 +40,8 @@ export class UserLogin {
     this.userService.loginUser(this.loginForm.value as Credentials)
     .subscribe({
       next:(response) => {
-        
         const access_token = response.token;
         const decodedToken = jwtDecode(access_token) as unknown as LoggedInUser;
-
         localStorage.setItem("access_token", access_token)
         this.userService.user.set({
           id: decodedToken.id,
@@ -45,11 +49,10 @@ export class UserLogin {
           username: decodedToken.username,
           role: decodedToken.role
         })
-        this.router.navigate(['user-main-page']);
+        this.router.navigate(['user-dashboard']);
       },
       error:(error) => {
-        this.invalidLogin.set(true);
-        console.log("Loging Error >>>", error)
+        this.invalidLogin.set({isInvalid: true, message:error.error.message});
       }
     })
   }
