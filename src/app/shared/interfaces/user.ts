@@ -16,7 +16,7 @@ export interface IUser {
     username: string;
     firstname?: string;
     lastname?: string;
-    role?: string;  // den kserw an prepei na mpei
+    role?: string;
     address?: IAddress;
     phone?:IPhone[];
 }

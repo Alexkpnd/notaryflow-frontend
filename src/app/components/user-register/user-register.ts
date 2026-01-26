@@ -94,7 +94,7 @@ export class UserRegister {
       next: (response) => {
         this.registrationStatus.set({success:true, message: "User registered. Redirecting to Login Page..."})
         this.registerForm.reset();
-        this.registerForm.markAsUntouched();
+        
         setTimeout(()=>{
           this.router.navigate(['user-login'])
         },3000)
