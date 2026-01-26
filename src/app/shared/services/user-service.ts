@@ -6,7 +6,7 @@ import { Credentials, LoggedInUser } from '../interfaces/user';
 import { IUser } from '../interfaces/user';
 
 const API_AUTH_URL = `${environment.apiUrl}/api/auth`;
-
+const API_USERS_URL = `${environment.apiUrl}/api/users`;
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +58,9 @@ export class UserService {
     } catch (error) {
       return true;
     }
+  }
+
+  viewAllUsers(){
+    return this.http.get<IUser[]>(API_USERS_URL)
   }
 }

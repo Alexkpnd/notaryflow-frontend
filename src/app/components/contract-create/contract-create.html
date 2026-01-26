@@ -51,39 +51,10 @@
             <input matInput formControlName="propertyArea">
         </mat-form-field>
         <span>Check whether contract is final or not:</span>
-        <mat-checkbox formControlName="isSigned">Contract signed</mat-checkbox>
-
-        
-        
-        
+        <mat-checkbox formControlName="isSigned">Contract signed</mat-checkbox>   
     </form>
     <div class="d-flex gap-3 mt-5">
         <button mat-raised-button type="button" (click)="onResetValues()">Reset</button>
         <button mat-flat-button type="button" [disabled]="newContractForm.invalid" (click)="onSubmit()">Submit</button>
     </div>
-    
 </div>
-
-<!-- <div>
-    <table>
-        <thead>
-            <tr>
-                <th>Contract Number</th>
-                <th>Buyer</th>
-                <th>Created By</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (c of contracts(); track c) {
-                <tr>
-                    <td>{{c.contractNum}}</td>
-                    <td>{{c.contractBuyer}}</td>
-                    <td>{{c.createdBy?.username}}</td>
-                    <td><span role="button"> view</span></td>
-                    <td><span role="button"> update</span></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div> -->
-
