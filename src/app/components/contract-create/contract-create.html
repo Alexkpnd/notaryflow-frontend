@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="container d-flex flex-column mt-4">
     <h4 class="text-primary">New contract</h4>
     <p class="lead">Please insert contract details </p>
 
@@ -14,11 +14,13 @@
         }
     }
     <form class="d-flex flex-column " [formGroup]="newContractForm" >
-        <span class="mb-1">Insert the number of signed contract:</span>
-        <mat-form-field appearance="outline">
-            <mat-label>Contract Number</mat-label>
-            <input type="number" matInput formControlName="contractNum">   
-        </mat-form-field>
+            <span class="mb-1">Insert the number of signed contract:</span>
+            <mat-form-field appearance="outline">
+                <mat-label>Contract Number</mat-label>
+                <input type="text" matInput formControlName="contractNum">   
+            </mat-form-field>
+
+        
         <div class="d-flex gap-3">
             <div class="d-flex flex-column">
                 <span class="mb-1">Insert the name of the buyer:</span>
@@ -61,7 +63,6 @@
     </div>
     
 </div>
-
 
 <!-- <div>
     <table>

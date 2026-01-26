@@ -7,7 +7,7 @@
             </div>
         </div>
     } @else {
-        <div class="container mt-2">
+        <div class="mt-2">
             <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn-primary" routerLink="/contract-create"> Create New Contract</button>
             </div>
@@ -16,12 +16,12 @@
         <div class="row g-3">
             @for (c of contracts(); track c) {
                 <div class="col-12 col-md-6 col-lg-4">
-                    <mat-card appearance="outlined">
-                        <mat-card-header>
+                    <mat-card class="bg-light" appearance="outlined">
+                        <mat-card-header >
                             <mat-card-title>Contract:{{c.contractNum}}</mat-card-title>
-                            <mat-card-subtitle>
+                            <!-- <mat-card-subtitle>
                                 Buyer:{{c.contractBuyer}}
-                            </mat-card-subtitle>
+                            </mat-card-subtitle> -->
                             
                         </mat-card-header>
                         <mat-card-content>
@@ -32,7 +32,7 @@
                         
                         </mat-card-content>
                         <mat-card-actions>
-                            <button matButton>View</button>
+                            <button matButton routerLink="['/contract', c._id]">View</button>
                             <button matButton>Update</button>
                         </mat-card-actions>
                     </mat-card>

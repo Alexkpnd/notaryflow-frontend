@@ -8,7 +8,7 @@ import { authGuard } from './shared/guards/auth-guard';
 import { ContractsList } from './components/contracts-list/contracts-list';
 
 export const routes: Routes = [
-    {path:'landing-page', component:LandingPage},
+    {path:'landing-page', component:LandingPage, title:'Notary Flow'},
     {path:'', redirectTo:'landing-page', pathMatch: 'full'},
     {path:'user-login', component: UserLogin},
     {path:'user-dashboard', component: MainPage, canActivate:[authGuard]},

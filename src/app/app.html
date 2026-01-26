@@ -3,12 +3,20 @@
         <app-navbar></app-navbar>
     </div>
     @if (user()) {
-        <div class="d-flex gap-2">
-            <app-list-menu class="tex-nowrap"></app-list-menu>
-            <router-outlet class="text-nowrap"></router-outlet>
+        <div class="d-flex mt-2 gap-5">
+            <div style="width: 200px;">
+                <app-list-menu></app-list-menu>
+            </div>
+            <div class="flex-grow-1 text-nowrap">
+                <router-outlet></router-outlet>
+            </div>
+
         </div>
     } @else {
-        <router-outlet></router-outlet>
+        <div>
+             <router-outlet></router-outlet>
+        </div>
+       
     }
     
 </div>

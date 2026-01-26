@@ -1,5 +1,5 @@
 export interface IContract {
-    contractNum? : number;
+    contractNum : string;
     contractSeller? : string;
     contractBuyer? : string;
     contractPrice? : string;

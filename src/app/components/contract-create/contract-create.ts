@@ -38,7 +38,7 @@ export class ContractCreate {
   newContractForm = new FormGroup({
     contractNum: new FormControl('', Validators.required),
     contractSeller: new FormControl(''),
-    contractBuyer: new FormControl('', Validators.required),
+    contractBuyer: new FormControl(''),
     contractPrice: new FormControl(''),
     propertyArea: new FormControl(''),
     isSigned: new FormControl(false),
