@@ -22,12 +22,12 @@
                     <div class="d-flex gap-3 mb-5">
                         <mat-form-field appearance="outline" >
                             <mat-label>Email</mat-label>
-                            <input type="text", matInput formControlName="email">
+                            <input type="text" matInput formControlName="email">
                             <mat-error>Το email είναι υποχρεωτικό.</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Ψευδώνυμο</mat-label>
-                            <input type="text", matInput formControlName="username">
+                            <input type="text" matInput formControlName="username">
                             @if (registerForm.get('username')?.hasError('minlength')) {
                                 <mat-error>Το Ψευδώνυμο πρέπει να ειναι τουλάχιστον 3 χαρακτήρες</mat-error>
                             } @else {
@@ -38,7 +38,7 @@
                     <div class="d-flex gap-3 mb-5">
                         <mat-form-field appearance="outline">
                             <mat-label>Κωδικός</mat-label>
-                            <input type="password", matInput formControlName="password">
+                            <input type="password" matInput formControlName="password">
                             @if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("required")) {
                                 <mat-error>Ο Κωδικός ειναι υποχρεωτικός</mat-error>
                             } @else if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("pattern")) {
@@ -47,7 +47,7 @@
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Επιβεβαίωση Κωδικού</mat-label>
-                            <input type="password", matInput formControlName="confirmPassword">
+                            <input type="password" matInput formControlName="confirmPassword">
                             @if (registerForm.get('confirmPassword')?.hasError('passwordMissmatch')) {
                                 <mat-error>Οι κωδικοί δεν ταιριάζουν.</mat-error>
                             } @else if (registerForm.get('confirmPassword')?.touched && registerForm.get("confirmPassword")?.invalid) {
