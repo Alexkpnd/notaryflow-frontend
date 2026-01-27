@@ -3,14 +3,14 @@
     @if (user()) {
          <a class="navbar-brand ms-3" routerLink="user-dashboard"><img src="/img/logo-new.png" alt="NotaryFlow" class="logo"></a>
         <div>
-            <span class="p-2 m-3 fw-lighter"> Welcome, {{user()?.username}}!</span>
-            <span class="me-3 fw-lighter" role="button" routerLink="" (click)="logout()">Logout</span>
+            <span class="p-2 m-3 fw-lighter"> Καλως ήρθες, {{user()?.username}}!</span>
+            <span class="me-3 fw-lighter" role="button" routerLink="" (click)="logout()">Αποσύνδεση</span>
         </div>
     } @else {
         <a class="navbar-brand ms-3" routerLink=""><img src="/img/logo-new.png" alt="NotaryFlow" class="logo"></a>
         <div>
-            <span role="button" class=" p-2  m-3 fw-lighter " routerLink="user-register">Sign Up <i class="bi bi-person-fill"></i></span>
-            <span class="me-3 fw-lighter"  role="button" routerLink="user-login">Login <i class="bi bi-box-arrow-in-right"></i></span>
+            <span role="button" class=" p-2  m-3 fw-lighter " routerLink="user-register">Εγγραφή <i class="bi bi-person-fill"></i></span>
+            <span class="me-3 fw-lighter"  role="button" routerLink="user-login">Σύνδεση <i class="bi bi-box-arrow-in-right"></i></span>
         </div>
     }
 </nav>

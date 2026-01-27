@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column mt-4">
-    <h4 class="text-primary">New contract</h4>
-    <p class="lead">Please insert contract details </p>
+    <h4 class="text-primary">Εισαγωγή συμβολαίου</h4>
+    <p class="lead">Παρακαλώ εισάγετε τα στοιχεία του συμβολαίου σας.</p>
 
     @if (contractStatus()) {
         @if (contractStatus()?.success) {
@@ -14,47 +14,47 @@
         }
     }
     <form class="d-flex flex-column " [formGroup]="newContractForm" >
-            <span class="mb-1">Insert the number of signed contract:</span>
+            <span class="mb-1">Εισαγωγή αριθμού συμβολαίου</span>
             <mat-form-field appearance="outline">
-                <mat-label>Contract Number</mat-label>
-                <input type="text" matInput formControlName="contractNum">   
+                <mat-label>Αρ. Συμβολαίου</mat-label>
+                <input type="text" matInput formControlName="contractNum">
+                 <mat-error>Ο αριθμός είναι υποχρεωτικός.</mat-error>
             </mat-form-field>
 
         
         <div class="d-flex gap-3">
             <div class="d-flex flex-column">
-                <span class="mb-1">Insert the name of the buyer:</span>
+                <span class="mb-1">Εισάγετε το ονοματεπώνυμο του Αγοραστή</span>
                 <mat-form-field appearance="outline">
-                    <mat-label>Buyer's Fullname</mat-label>
-                    <input type="text" matInput formControlName="contractBuyer">
-                    <mat-error>Buyer's name is required.</mat-error>
+                    <mat-label>Ονοματεπώνυμο Αγοραστή</mat-label>
+                    <input type="text" matInput formControlName="contractBuyer">    
                 </mat-form-field>
             </div>
             <div class="d-flex gap-3">
                 <div class="d-flex flex-column">
-                    <span class="mb-1">Insert the name of the seller:</span>
+                    <span class="mb-1">Εισάγετε το Ονοματεπώνυμο του Πωλητή</span>
                     <mat-form-field appearance="outline">
-                        <mat-label>Seller's Fullname</mat-label>
+                        <mat-label>Ονοματεπώνυμο πωλητή</mat-label>
                         <input matInput formControlName="contractSeller">
                      </mat-form-field>
                 </div>
             </div>
         </div>
-        <span class="mb-1">Insert the price of contract:</span>
+        <span class="mb-1">Εισάγετε το τίμημα</span>
         <mat-form-field appearance="outline">
-            <mat-label>Price</mat-label>
+            <mat-label>Τίμημα</mat-label>
             <input matInput formControlName="contractPrice">
         </mat-form-field>
-         <span class="mb-1">Insert the location of the property:</span>
+         <span class="mb-1">Εισάγετε την τοποθεσία του ακινήτου</span>
         <mat-form-field appearance="outline">
-            <mat-label>Property Area</mat-label>
+            <mat-label>Τοποθεσία ακινήτου</mat-label>
             <input matInput formControlName="propertyArea">
         </mat-form-field>
-        <span>Check whether contract is final or not:</span>
-        <mat-checkbox formControlName="isSigned">Contract signed</mat-checkbox>   
+        <span>Οριστικοποίηση συμβολαίου</span>
+        <mat-checkbox formControlName="isSigned">Το συμβόλαιο έχει υπογραφεί</mat-checkbox>   
     </form>
     <div class="d-flex gap-3 mt-5">
-        <button mat-raised-button type="button" (click)="onResetValues()">Reset</button>
-        <button mat-flat-button type="button" [disabled]="newContractForm.invalid" (click)="onSubmit()">Submit</button>
+        <button mat-raised-button type="button" (click)="onResetValues()">Καθαρισμός Φόρμας</button>
+        <button mat-flat-button type="button" [disabled]="newContractForm.invalid" (click)="onSubmit()">Εισαγωγή</button>
     </div>
 </div>

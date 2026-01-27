@@ -1,9 +1,34 @@
 <div class="container">
-    
+    <h3><u>Αναλυτικά στοιχεία συμβολαίου</u></h3>
+
+    <div class="d-flex flex-column mt-5 ms-5 border rounded p-4">
+        <div class="mb-4">
+            <h5 class="">Αρ. Συμβολαίου</h5>
+            {{contractDetails()?.contractNum}}
+        </div>
+        <div class="d-flex gap-5 text-nowrap">
+            <div class="mb-4">
+                <h5>Στοιχεία αγοραστή</h5>
+                {{contractDetails()?.contractBuyer}}
+            </div>
+
+            <div class="mb-4">
+                <h5>Στοιχεία πωλητή</h5>
+                {{contractDetails()?.contractSeller}}
+            </div>
+        </div>
+        <div class="d-flex gap-5 text-nowrap">
+        <div class="mb-4">
+            <h5>Συνολικό τίμημα</h5>
+            <p>{{contractDetails()?.contractPrice}} €</p>
+        </div>
+        <div class="mb-4">
+            <h5>Τοποθεσία ακινήτου</h5>
+            <p>{{contractDetails()?.propertyArea}}</p>
+        </div>
+        </div>
+    </div>
 </div>
 
 
-{{contractDetails()?.contractNum}}
-{{contractDetails()?.contractBuyer}}
-{{contractDetails()?.contractSeller}}
-{{contractDetails()?.contractPrice}}
+

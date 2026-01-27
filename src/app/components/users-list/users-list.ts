@@ -17,7 +17,6 @@ export class UsersList implements OnInit {
     this.userService.viewAllUsers().subscribe({
       next:(response) => {
         this.users.set(response);
-        console.log(response)
       }
     })
   }

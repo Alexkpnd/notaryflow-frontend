@@ -1,6 +1,6 @@
 <div class="container mt-5">
-    <h4 class="text-primary">Sign up</h4>
-    <h6 class="lead text-secondary">Please register in order to access services </h6>
+    <h4 class="text-primary">Εγγραφή νέου χρήστη</h4>
+    <h6 class="lead text-secondary">Παρακαλώ εγγραφείτε για είσοδο στις υπηρεσίες.</h6>
     @if (registrationStatus()) {
         @if (registrationStatus()?.success){
             <div class="alert alert-success mt-2 w-50">
@@ -18,102 +18,102 @@
         <div class="d-flex gap-2">
             <div class=" d-flex flex-column">
                 <div class="p-4 border rounded">
-                    <h6 class="text-secondary mb-3">Required info*</h6>
-                    <div class="d-flex gap-3 mb-3">
+                    <h6 class="text-secondary mb-3">Απαραίτητα στοιχεία</h6>
+                    <div class="d-flex gap-3 mb-5">
                         <mat-form-field appearance="outline" >
                             <mat-label>Email</mat-label>
                             <input type="text", matInput formControlName="email">
-                            <mat-error>Email is required.</mat-error>
+                            <mat-error>Το email είναι υποχρεωτικό.</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
-                            <mat-label>Username</mat-label>
+                            <mat-label>Ψευδώνυμο</mat-label>
                             <input type="text", matInput formControlName="username">
                             @if (registerForm.get('username')?.hasError('minlength')) {
-                                <mat-error>Username must be at least 3 chars</mat-error>
+                                <mat-error>Το Ψευδώνυμο πρέπει να ειναι τουλάχιστον 3 χαρακτήρες</mat-error>
                             } @else {
-                                <mat-error>Username is required.</mat-error>
+                                <mat-error>Το Ψευδώνυμο ειναι υποχρεωτικό</mat-error>
                             }                          
                         </mat-form-field>
                     </div>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex gap-3 mb-5">
                         <mat-form-field appearance="outline">
-                            <mat-label>Password</mat-label>
+                            <mat-label>Κωδικός</mat-label>
                             <input type="password", matInput formControlName="password">
                             @if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("required")) {
-                                <mat-error>Password is required</mat-error>
+                                <mat-error>Ο Κωδικός ειναι υποχρεωτικός</mat-error>
                             } @else if (registerForm.get('password')?.touched && registerForm.get("password")?.hasError("pattern")) {
-                                <mat-error>Password min: 8 chars/digits, 1 Capital & 1 Symbol at least. </mat-error>
+                                <mat-error>Ελάχιστες απαιτήσεις: 8 χαραρκτήρες, 1 Κεφαλαίο, 1 πεζό, 1 αριθμός και 1 ειδικός χαρακτήρας κατ' ελάχιστο. </mat-error>
                             }
                         </mat-form-field>
                         <mat-form-field appearance="outline">
-                            <mat-label>Confirm password</mat-label>
+                            <mat-label>Επιβεβαίωση Κωδικού</mat-label>
                             <input type="password", matInput formControlName="confirmPassword">
                             @if (registerForm.get('confirmPassword')?.hasError('passwordMissmatch')) {
-                                <mat-error>Passwords do not match!</mat-error>
+                                <mat-error>Οι κωδικοί δεν ταιριάζουν.</mat-error>
                             } @else if (registerForm.get('confirmPassword')?.touched && registerForm.get("confirmPassword")?.invalid) {
-                                <mat-error> Password is required or invalid</mat-error>
+                                <mat-error> Ο κωδικός λείπει ή ειναι λάθος</mat-error>
                             }
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="p-4 mt-2 border rounded">
-                    <h6 class="text-secondary mb-3">Personal info</h6>
+                    <h6 class="text-secondary mb-3">Προσωπικά στοιχεία</h6>
                     <div class="d-flex gap-3 mb-3">
                         <mat-form-field appearance="outline">
-                            <mat-label> Firstname</mat-label>
+                            <mat-label> Όνομα </mat-label>
                             <input type="text" matInput formControlName="firstname">
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
-                            <mat-label>Lastname</mat-label>
+                            <mat-label>Επώνυμο</mat-label>
                             <input type="text" matInput formControlName="lastname">
                         </mat-form-field>
                     </div>                   
                 </div>
             </div>
             <div class="d-flex flex-column p-4 border rounded" formGroupName="address">
-                <h6 class="text-secondary mb-3">Address info</h6>
+                <h6 class="text-secondary mb-3">Στοιχεία διέυθυνσης</h6>
                 <div class="d-flex gap-3">
                     <mat-form-field appearance="outline">
-                        <mat-label>Street</mat-label>
+                        <mat-label>Οδός</mat-label>
                         <input type="text" matInput formControlName="street">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
-                        <mat-label>Street Number</mat-label>
+                        <mat-label>Αριθμός</mat-label>
                         <input type="text" matInput formControlName="streetNum">
                     </mat-form-field>
                 </div>
                 <div class="d-flex gap-3">
                     <mat-form-field appearance="outline">
-                        <mat-label>Postal Code</mat-label>
+                        <mat-label>Τ.Κ.</mat-label>
                         <input type="text" matInput formControlName="postCode">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
-                        <mat-label>City</mat-label>
+                        <mat-label>Πόλη</mat-label>
                         <input type="text" matInput formControlName="city">
                     </mat-form-field>
                 </div>
                 <mat-form-field appearance="outline">
-                    <mat-label>Country</mat-label>
+                    <mat-label>Χώρα</mat-label>
                     <input type="text" matInput formControlName="country">
                 </mat-form-field>
             </div>
         </div>
         <div class=" p-4 border rounded">
-            <h6 class="text-secondary mb-3">Phone info</h6>
+            <h6 class="text-secondary mb-3">Στοιχεία επικοινωνίας</h6>
             <div formArrayName="phone"> 
                 @for (p of phone.controls; let i=$index; track i ) {
                     <div [formGroupName]="i" class="d-flex gap-3">
                         <mat-form-field appearance="outline">
-                            <mat-label> Phone Type</mat-label>
+                            <mat-label> Τύπος</mat-label>
                             <mat-select formControlName="type">
-                                <mat-option value="mobile">Mobile</mat-option>
-                                <mat-option value="work">Work</mat-option>
-                                <mat-option value="home">Home</mat-option>
+                                <mat-option value="mobile">Κινητό</mat-option>
+                                <mat-option value="work">Εργασία</mat-option>
+                                <mat-option value="home">Οικία</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
-                            <mat-label>Number</mat-label>
+                            <mat-label>Αριθμός</mat-label>
                             <input type="text" matInput formControlName="phoneNum">
                         </mat-form-field>
                         @if (phone.controls.length > 1 && i!== 0) {
@@ -125,8 +125,8 @@
             </div>      
         </div>
         <div class="d-flex gap-3">
-            <button mat-raised-button type="button" (click)="onResetValues()">Reset</button>
-            <button mat-flat-button color="primary" type="button" (click)="onSubmit()" [disabled]="registerForm.invalid">Sign up</button>
+            <button mat-raised-button type="button" (click)="onResetValues()">Καθαρισμός φόρμας</button>
+            <button mat-flat-button color="primary" type="button" (click)="onSubmit()" [disabled]="registerForm.invalid">Εγγραφή</button>
         </div>
         
     </form>

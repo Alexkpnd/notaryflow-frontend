@@ -1,20 +1,20 @@
 <div class="mt-5 container text-center">
-    <h4 class="text-primary">User Login</h4>
-    <h6 class="lead text-secondary">Please use your credentials to login</h6>
+    <h4 class="text-primary">Είσοδος Χρήστη</h4>
+    <h6 class="lead text-secondary">Παρακαλώ εισάγετε τα στοιχεία σας για είσοδο στην εφαρμογή</h6>
 
     <form [formGroup]="loginForm" class="d-flex flex-column align-items-center mt-3 gap-3">
     <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input type="text" matInput formControlName="email">
-        <mat-error>Email is required.</mat-error>
+        <mat-error>Το email ειναι υποχρεωτικό.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
+        <mat-label>Κωδικός</mat-label>
         <input type="password" matInput formControlName="password">
-        <mat-error>Password is required.</mat-error>
+        <mat-error>Ο κωδικός ειναι υποχρεωτικός.</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button [disabled]="loginForm.invalid" color="primary" (click)="onSubmit()">Login</button>
+    <button mat-flat-button [disabled]="loginForm.invalid" color="primary" (click)="onSubmit()">Σύνδεση</button>
 
     @if (invalidLogin()) {
         <div class="alert alert-danger mt-4">

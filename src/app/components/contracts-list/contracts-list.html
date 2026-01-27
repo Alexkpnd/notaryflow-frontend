@@ -1,35 +1,35 @@
  <div class="container mt-2">
     @if (contracts().length === 0) {
-        <div class="alert alert-warning mt-5 text-center">No contracts available</div>
         <div class="mt-2">
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" routerLink="/contract-create"> Create New Contract</button>
+                <button type="button" class="btn btn-primary" routerLink="/contract-create"> Εισαγωγή νέου συμβολαίου</button>
             </div>
         </div>
+        <div class="alert alert-warning mt-5 text-center">Η λίστα συμβολαίων ειναι κενή</div>
     } @else {
         <div class="mt-2">
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" routerLink="/contract-create"> Create New Contract</button>
+                <button type="button" class="btn btn-primary" routerLink="/contract-create"> Εισαγωγή νέου συμβολαίου</button>
             </div>
         </div>
-        <h3 class="text-primary">Contacts List</h3>
+        <h3 class="text-primary">Λίστα συμβολαίων</h3>
         <div class="row g-3">
             @for (c of contracts(); track c) {
                 <div class="col-12 col-md-6 col-lg-4">
                     <mat-card class="bg-light" appearance="outlined">
                         <mat-card-header >
-                            <mat-card-title>Contract:{{c.contractNum}}</mat-card-title>
+                            <mat-card-title>Αρ. Συμβολαίου: {{c.contractNum}}</mat-card-title>
                             
                         </mat-card-header>
                         <mat-card-content>
-                            <p>Buyer:{{c.contractBuyer}}</p>
+                            <p>Αγοραστής: {{c.contractBuyer}}</p>
                             <div class="d-flex justify-content-center">
                                 <img mat-card-image class="cardimg" src="/img/logo-new.png" alt="card-image">
                             </div>
                         
                         </mat-card-content>
                         <mat-card-actions>
-                            <button matButton [routerLink]="['contract-details', c._id]">View</button>
+                            <button matButton [routerLink]="['contract-details', c._id]"> Λεπτομέρειες</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
