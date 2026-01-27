@@ -63,4 +63,8 @@ export class UserService {
   viewAllUsers(){
     return this.http.get<IUser[]>(API_USERS_URL)
   }
+
+  showMe(){
+    return this.http.get<IUser>(`${API_AUTH_URL}/me`)
+  }
 }

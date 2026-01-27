@@ -16,9 +16,9 @@
 
     <button mat-flat-button [disabled]="loginForm.invalid" color="primary" (click)="onSubmit()">Σύνδεση</button>
 
-    @if (invalidLogin()) {
+    @if (invalidLoginState()) {
         <div class="alert alert-danger mt-4">
-          <p>Error: {{invalidLogin()?.message}}</p>
+          <p>Error: {{invalidLoginState()?.message}}</p>
         </div>
     }
 
