@@ -6,12 +6,10 @@ import { MatAnchor } from '@angular/material/button';
 import { LoggedInUser, Credentials } from '../../shared/interfaces/user';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
+import { invalidLoginState } from '../../shared/interfaces/user';
 
 
-type invalidLogin = {
-  isInvalid: boolean;
-  message: string;
-}
+
 
 @Component({
   selector: 'app-user-login',
@@ -29,7 +27,7 @@ type invalidLogin = {
 export class UserLogin {
   router = inject(Router)
   userService = inject(UserService);
-  invalidLogin = signal<invalidLogin | null> (null);
+  invalidLoginState = signal<invalidLoginState | null> (null);
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -52,7 +50,7 @@ export class UserLogin {
         this.router.navigate(['user-dashboard']);
       },
       error:(error) => {
-        this.invalidLogin.set({isInvalid: true, message:error.error.message});
+        this.invalidLoginState.set({isInvalid: true, message:error.error.message});
       }
     })
   }

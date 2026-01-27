@@ -33,3 +33,13 @@ export interface IPhone {
     type?: string;
     phoneNum?: string;
 }
+
+export interface invalidLoginState  {
+  isInvalid: boolean;
+  message: string;
+}
+
+export interface registrationStatus  {
+      success: boolean;
+      message: string;
+  }

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormArray, FormGroup, FormControl, AbstractControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IUser } from '../../shared/interfaces/user';
+import { IUser, registrationStatus } from '../../shared/interfaces/user';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,11 +9,6 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../shared/services/user-service';
 import { Router } from '@angular/router';
 
-
-  type registrationStatus =  {
-      success: boolean;
-      message: string;
-  }
 
 @Component({
   selector: 'app-user-register',
