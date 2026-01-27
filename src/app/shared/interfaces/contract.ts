@@ -1,4 +1,5 @@
 export interface IContract {
+    _id:string;
     contractNum : string;
     contractSeller? : string;
     contractBuyer? : string;

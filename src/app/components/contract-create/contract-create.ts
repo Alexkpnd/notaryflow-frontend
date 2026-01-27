@@ -49,7 +49,6 @@ export class ContractCreate {
     
     this.contractService.createContract(contractCreated).subscribe({
       next:(response) => {
-        console.log('contract created.')
         this.contractStatus.set({success:true, message:"Contract Created successfully"})
         
       },

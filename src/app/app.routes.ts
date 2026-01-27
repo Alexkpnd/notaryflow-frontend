@@ -7,6 +7,7 @@ import { ContractCreate } from './components/contract-create/contract-create';
 import { authGuard } from './shared/guards/auth-guard';
 import { ContractsList } from './components/contracts-list/contracts-list';
 import { UsersList } from './components/users-list/users-list';
+import { ContractDetails } from './components/contract-details/contract-details';
 
 export const routes: Routes = [
     {path:'landing-page', component:LandingPage, title:'Notary Flow'},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path:'user-register', component: UserRegister},
     {path:'contract-create', component: ContractCreate, canActivate:[authGuard]},
     {path:'contracts-list', component: ContractsList, canActivate:[authGuard]},
-    {path:'users-list',component:UsersList,canActivate:[authGuard]}
+    {path:'users-list',component:UsersList,canActivate:[authGuard]},
+    {path:'contracts-list/contract-details/:id', component: ContractDetails, canActivate:[authGuard]},
 ];

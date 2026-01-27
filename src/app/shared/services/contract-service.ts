@@ -19,4 +19,8 @@ export class ContractService {
   viewAllContracts() {
     return this.http.get<IContract[]>(CONTRACT_API_URL)
   }
+
+  viewContract(id:any) {
+    return this.http.get<IContract>(`${CONTRACT_API_URL}/${id}`)
+  }
 }

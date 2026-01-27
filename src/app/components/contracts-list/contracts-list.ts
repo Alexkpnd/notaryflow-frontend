@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ContractService } from '../../shared/services/contract-service';
 import { IContract } from '../../shared/interfaces/contract';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +16,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './contracts-list.html',
   styleUrl: './contracts-list.css',
 })
-export class ContractsList {
+export class ContractsList implements OnInit {
+  
   contractServive = inject(ContractService);
   contracts = signal<IContract[]>([]);
   
@@ -24,7 +25,9 @@ export class ContractsList {
     this.contractServive.viewAllContracts().subscribe({
       next:(response) => {
         this.contracts.set(response);
-        console.log(response)
+      },
+      error: (error) => {
+        console.log(error)
       }
     })
   }

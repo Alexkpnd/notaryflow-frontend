@@ -19,21 +19,17 @@
                     <mat-card class="bg-light" appearance="outlined">
                         <mat-card-header >
                             <mat-card-title>Contract:{{c.contractNum}}</mat-card-title>
-                            <!-- <mat-card-subtitle>
-                                Buyer:{{c.contractBuyer}}
-                            </mat-card-subtitle> -->
                             
                         </mat-card-header>
                         <mat-card-content>
-                            <p>Price:{{c.contractPrice}}</p>
+                            <p>Buyer:{{c.contractBuyer}}</p>
                             <div class="d-flex justify-content-center">
                                 <img mat-card-image class="cardimg" src="/img/logo-new.png" alt="card-image">
                             </div>
                         
                         </mat-card-content>
                         <mat-card-actions>
-                            <button matButton routerLink="['/contract', c._id]">View</button>
-                            <button matButton>Update</button>
+                            <button matButton [routerLink]="['contract-details', c._id]">View</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
