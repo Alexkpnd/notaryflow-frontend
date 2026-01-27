@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'https://symvapp-backend.onrender.com'
+    apiUrl: 'http://localhost:3000'
 };
