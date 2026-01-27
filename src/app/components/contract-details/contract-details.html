@@ -27,6 +27,14 @@
             <p>{{contractDetails()?.propertyArea}}</p>
         </div>
         </div>
+        <div class="mb-4">
+            <h5>Οριστικό συμβόλαιο</h5>
+            @if (contractDetails()?.isSigned) {
+                <p><i class="bi bi-check-square"></i></p>
+            } @else {
+                <i class="bi bi-exclamation-triangle"></i>
+            }
+        </div>
     </div>
 </div>
 

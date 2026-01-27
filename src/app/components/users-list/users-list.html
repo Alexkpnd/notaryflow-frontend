@@ -15,7 +15,12 @@
                     <td>{{u.username}}</td>
                     <td>{{u.firstname}}</td>
                     <td>{{u.lastname}}</td>
-                    <td>{{u.role}}</td>
+                    @if (u.role === 'ADMIN') {
+                        <td>Διαχειριστής</td>
+                    } @else {
+                        <td>Χειριστής</td>
+                    }
+                    
                     
                 </tr>
             }

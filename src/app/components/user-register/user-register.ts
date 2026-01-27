@@ -87,7 +87,7 @@ export class UserRegister {
 
     this.userService.registerUser(userCreated).subscribe({
       next: (response) => {
-        this.registrationStatus.set({success:true, message: "User registered. Redirecting to Login Page..."})
+        this.registrationStatus.set({success:true, message: "Η εγγραφής σας ολοκληρώθηκε. Σας προωθούμε στην σελίδα εισόδου"})
         this.registerForm.reset();
         
         setTimeout(()=>{
