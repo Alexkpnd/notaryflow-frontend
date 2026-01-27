@@ -2,9 +2,51 @@
     <h3 class="mb-5">Το προφίλ μου</h3>
 
     <div class="d-flex flex-column">
-        <p>Το ψευδώνυμο μου: {{myProfile()?.username}}</p>
-        <p>Το email μου: {{myProfile()?.email}}</p>
-        <p>O ρόλος μου: {{myProfile()?.role}}</p>
+        
+        <p>Το ψευδώνυμο μου: {{myDBself()?.username}}</p>
+        <p>Το email μου: {{myDBself()?.email}}</p>
+        <p>O ρόλος μου: {{myDBself()?.role}}</p>
+        <p>To όνομα μου: {{myDBself()?.firstname}}</p>
+        <p>Το επώνυμο μου: {{myDBself()?.lastname}}</p>
+        <div class="d-flex flex-column ms-5">
+            <h5>Στοιχεία Διεύθυνσης</h5>
+            @if (myDBself()?.address?.street) {
+                <p>Oδός: {{myDBself()?.address?.street}}</p>
+            } @else {
+                <p>Oδός: -</p>
+            }
+            @if (myDBself()?.address?.streetNum) {
+                <p>Αριθμός: {{myDBself()?.address?.streetNum}}</p>
+            } @else {
+                <p>Αριθμός: - </p>
+            }
+            @if (myDBself()?.address?.postCode) {
+                <p>T.K.: {{myDBself()?.address?.postCode}}</p>
 
+            } @else {
+                <p>T.K.: - </p>
+
+            }
+            @if (myDBself()?.address?.city) {
+                <p>Πόλη: {{myDBself()?.address?.city}}</p>
+            } @else {
+                <p>Πόλη: - </p>
+            }
+            @if (myDBself()?.address?.country) {
+                <p>Χώρα: {{myDBself()?.address?.country}}</p>
+            } @else {
+                <p>Χώρα: - </p>
+            }
+        </div>
+        
+
+        <!-- <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Firstname</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <button MatInput mat-raised-button (click)="onUpdate()">Ενημέρωση</button>
+        </form> -->
+        
     </div>
 </div>

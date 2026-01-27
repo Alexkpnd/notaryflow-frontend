@@ -17,7 +17,7 @@ export const routes: Routes = [
     {path:'user-dashboard', component: MainPage, canActivate:[authGuard]},
     {path:'user-register', component: UserRegister},
     {path:'contract-create', component: ContractCreate, canActivate:[authGuard]},
-    {path:'contracts-list', component: ContractsList, canActivate:[authGuard]},
+    {path:'contracts-list', component: ContractsList},
     {path:'users-list',component:UsersList,canActivate:[authGuard]},
     {path:'contracts-list/contract-details/:id', component: ContractDetails, canActivate:[authGuard]},
     {path:'my-profile',component:UserProfile, canActivate:[authGuard]}
