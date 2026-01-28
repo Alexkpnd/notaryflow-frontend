@@ -68,7 +68,11 @@ export class UserService {
     return this.http.get<IUser>(`${API_AUTH_URL}/me`)
   }
 
-  updateMyself(id:string, data:IUser) {
-    return this.http.put<IUser>(`${API_USERS_URL}/${id}`, data)
+  createUser(data:IUser){
+    return this.http.post<IUser>(`${API_USERS_URL}`, data);
+  }
+
+  removeUser(id:string) {
+    return this.http.delete<IUser>(`${API_USERS_URL}/${id}`)
   }
 }

@@ -1,12 +1,16 @@
 
 <div class="container">
-    <table class="table table-bordered table-stripped text-warp">
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary" routerLink="/user-create"> Εισαγωγή χρήστη</button>
+    </div>
+    <table class="table mt-3 table-bordered table-stripped text-warp">
         <thead>
             <tr class="text-center">
                 <th>Ψευδώνυμο</th>
                 <th>Όνομα</th>
                 <th>Επώνυμο</th>
                 <th>Ρόλος Χρήστη</th>
+                <th>Ενέργειες</th>
             </tr>
         </thead>
         <tbody>
@@ -15,14 +19,25 @@
                     <td>{{u.username}}</td>
                     <td>{{u.firstname}}</td>
                     <td>{{u.lastname}}</td>
+
                     @if (u.role === 'ADMIN') {
                         <td>Διαχειριστής</td>
                     } @else {
                         <td>Χειριστής</td>
                     }
+                    @if (u.role === 'EDITOR') {
+                        <td>
+                            <span role="button" title="Διαγραφή" (click)="onClickDel(u._id)"><i class="bi bi-person-x fs-6"></i></span>
+                        </td>
+                    } @else {
+                        <td></td>
+                    }    
                     
                     
+                 
                 </tr>
+                
+                    
             }
         </tbody>
     </table>

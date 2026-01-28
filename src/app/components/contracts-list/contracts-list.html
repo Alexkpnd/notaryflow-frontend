@@ -12,7 +12,7 @@
                 <button type="button" class="btn btn-primary" routerLink="/contract-create"> Εισαγωγή νέου συμβολαίου</button>
             </div>
         </div>
-        <h3 class="text-primary">Λίστα συμβολαίων</h3>
+        <h3 class="text-primary mt-3">Λίστα συμβολαίων</h3>
         <div class="row g-3">
             @for (c of contracts(); track c) {
                 <div class="col-12 col-md-6 col-lg-4">
@@ -28,8 +28,11 @@
                             </div>
                         
                         </mat-card-content>
-                        <mat-card-actions>
-                            <button matButton [routerLink]="['contract-details', c._id]"> Λεπτομέρειες</button>
+                        <mat-card-actions class="d-flex gap-1">
+                            <button mat-flat-button [routerLink]="['contract-details', c._id]"> Λεπτομέρειες</button>
+                            @if (user()?.role==='ADMIN') {
+                                 <button mat-raised-button (click)="onClickDelete(c._id)">Διαγραφή</button>
+                            }
                         </mat-card-actions>
                     </mat-card>
                 </div>

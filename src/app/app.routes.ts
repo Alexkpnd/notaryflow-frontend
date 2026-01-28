@@ -11,6 +11,7 @@ import { ContractDetails } from './components/contract-details/contract-details'
 import { UserProfile } from './components/user-profile/user-profile';
 import { adminRoleGuard } from './shared/guards/admin-role-guard';
 import { UnauthorizedPage } from './components/unauthorized-page/unauthorized-page';
+import { UserCreate } from './components/user-create/user-create';
 
 export const routes: Routes = [
     {path:'landing-page', component:LandingPage, title:'Notary Flow'},
@@ -23,5 +24,6 @@ export const routes: Routes = [
     {path:'users-list',component:UsersList,canActivate:[authGuard, adminRoleGuard]},
     {path:'contracts-list/contract-details/:id', component: ContractDetails, canActivate:[authGuard]},
     {path:'my-profile',component:UserProfile, canActivate:[authGuard]},
-    {path:'access-denied', component:UnauthorizedPage, canActivate:[authGuard]}
+    {path:'access-denied', component:UnauthorizedPage, canActivate:[authGuard]},
+    {path:'user-create', component:UserCreate, canActivate:[authGuard, adminRoleGuard]}
 ];

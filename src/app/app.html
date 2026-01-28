@@ -3,8 +3,8 @@
         <app-navbar></app-navbar>
     </div>
     @if (user()) {
-        <div class="d-flex mt-2 gap-5">
-            <div style="width: 200px;">
+        <div class="d-flex mt-2 gap-3">
+            <div style="width: 150px;">
                 <app-list-menu></app-list-menu>
             </div>
             <div class="flex-grow-1 text-nowrap">
@@ -17,6 +17,5 @@
              <router-outlet></router-outlet>
         </div>
        
-    }
-    
+    }   
 </div>

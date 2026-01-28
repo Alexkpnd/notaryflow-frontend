@@ -20,7 +20,11 @@ export class ContractService {
     return this.http.get<IContract[]>(CONTRACT_API_URL)
   }
 
-  viewContract(id:any) {
+  viewContract(id:string) {
     return this.http.get<IContract>(`${CONTRACT_API_URL}/${id}`)
+  }
+
+  deleteContract(id:string){
+    return this.http.delete<IContract>(`${CONTRACT_API_URL}/${id}`)
   }
 }

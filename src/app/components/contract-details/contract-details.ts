@@ -26,6 +26,7 @@ export class ContractDetails implements OnInit {
   ngOnInit() {
     this.contractService.viewContract(this.contractId()).subscribe({
       next:(response) => {
+        console.log(response)
         this.contractDetails.set(response);
         
       },

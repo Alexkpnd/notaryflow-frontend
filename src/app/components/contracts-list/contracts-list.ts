@@ -4,6 +4,7 @@ import { IContract } from '../../shared/interfaces/contract';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../shared/services/user-service';
 
 
 @Component({
@@ -18,16 +19,33 @@ import { RouterLink } from '@angular/router';
 })
 export class ContractsList implements OnInit {
   
+  userService = inject(UserService)
   contractServive = inject(ContractService);
   contracts = signal<IContract[]>([]);
+
+  user = this.userService.user;
   
   ngOnInit(){
+    this.loadContracts();
+  }
+  
+  loadContracts(){
     this.contractServive.viewAllContracts().subscribe({
       next:(response) => {
+        console.log(response)
         this.contracts.set(response);
       },
       error: (error) => {
         console.log(error)
+      }
+    })
+  }
+
+  onClickDelete(id:string) {
+    this.contractServive.deleteContract(id).subscribe({
+      next:(response) => {
+        console.log(response);
+        this.loadContracts();
       }
     })
   }
