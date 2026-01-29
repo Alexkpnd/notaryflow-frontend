@@ -78,10 +78,13 @@ export class UserCreate {
       next: (response) => {
         this.registrationStatus.set({success:true, message: "O χρήστης δημιουργήθηκε"})
         this.createUserForm.reset();
+        setTimeout(() => {
+          this.router.navigate(['users-list'])
+        }, 3000);
+        
         
       },
       error: (error) => {
-        //console.log('There was an error >>>', error);
         this.registrationStatus.set({success: false, message: error.error.message })
       }
     })

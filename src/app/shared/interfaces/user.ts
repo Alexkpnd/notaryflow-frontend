@@ -36,11 +36,16 @@ export interface IPhone {
 }
 
 export interface invalidLoginState  {
-  isInvalid: boolean;
-  message: string;
+    isInvalid: boolean;
+    message: string;
 }
 
 export interface registrationStatus  {
-      success: boolean;
-      message: string;
+    success: boolean;
+    message: string;
+  }
+
+  export interface deletionStatus {
+    success: boolean;
+    message: string;
   }

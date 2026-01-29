@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { UserService } from '../../shared/services/user-service';
 
 
+
 @Component({
   selector: 'app-contracts-list',
   imports: [

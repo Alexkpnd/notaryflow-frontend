@@ -3,6 +3,17 @@
     <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-primary" routerLink="/user-create"> Εισαγωγή χρήστη</button>
     </div>
+    @if (deletionStatus()) {
+        @if (deletionStatus()?.success) {
+            <div class="alert alert-success mt-2 col-12 col-md-6">
+                {{deletionStatus()?.message}}
+            </div>
+        } @else {
+            <div class="alert alert-danger mt-2 col-12 col-md-6">
+                {{deletionStatus()?.message}}
+            </div> 
+        }
+    }
     <table class="table mt-3 table-bordered table-stripped text-warp">
         <thead>
             <tr class="text-center">
@@ -14,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (u of users(); track u) {
+            @for (u of users(); track u._id) {
                 <tr class="text-center">
                     <td>{{u.username}}</td>
                     <td>{{u.firstname}}</td>
@@ -31,13 +42,11 @@
                         </td>
                     } @else {
                         <td></td>
-                    }    
-                    
-                    
-                 
+                    } 
+                                            <td>
+                            <span role="button" title="Διαγραφή" (click)="onClickDel(u._id)"><i class="bi bi-person-x fs-6"></i></span>
+                        </td>           
                 </tr>
-                
-                    
             }
         </tbody>
     </table>
